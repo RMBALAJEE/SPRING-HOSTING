@@ -27,6 +27,19 @@ public class AppController {
 	@Autowired
 	JWTManager jwt;
 	
+	@Autowired
+	EmailManager em;
+	
+	@GetMapping("/send")
+	public String send()
+	{
+		String frommail="sample@gmail.com";
+		String toemail="balajee.rm@gmail.com";
+		String subject="welcome to emailing";
+		String text="Hello hai sir";
+		return em.sendEmail(frommail, toemail, subject, text);
+	}
+	
 	@GetMapping("/")
 	public String fun1() {
 		return "This is Home Page";
